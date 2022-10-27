@@ -16,7 +16,7 @@ func main() {
 	router := chi.NewRouter()
 	router.Get("/data", app1.GetData)
 
-	port := ":8008"
+	port := ":5018"
 	srv := http.Server{
 		Addr:        port,
 		Handler:     router,
