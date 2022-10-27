@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/cors"
 	"log"
 	"net/http"
 	"os"
@@ -14,12 +15,18 @@ func main() {
 	app1 := newApp()
 
 	router := chi.NewRouter()
+	c := cors.New(cors.Options{
+		AllowedOrigins:   []string{"http://localhost:8000"},
+		AllowCredentials: true,
+	})
+
+	handler := c.Handler(router)
 	router.Get("/data", app1.GetData)
 
-	port := ":5018"
+	port := ":9090"
 	srv := http.Server{
 		Addr:        port,
-		Handler:     router,
+		Handler:     handler,
 		IdleTimeout: 120 * time.Second,
 	}
 	log.Printf("SERVER STARTING ON PORT:%v \n\n", port)
