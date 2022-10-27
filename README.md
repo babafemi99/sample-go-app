@@ -1,5 +1,5 @@
 # sample-go-app
 
 to run application : 
- -go build sample_app
- - ./sample_app
+1. open folder in terminal
+2. run ./task-1
