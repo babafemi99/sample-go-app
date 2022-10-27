@@ -23,7 +23,7 @@ func main() {
 	handler := c.Handler(router)
 	router.Get("/data", app1.GetData)
 
-	port := ":9090"
+	port := ":5050"
 	srv := http.Server{
 		Addr:        port,
 		Handler:     handler,
